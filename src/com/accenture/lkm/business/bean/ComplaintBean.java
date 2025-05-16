@@ -12,13 +12,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class ComplaintBean {
 
-	/**	 
-	 To-Do Item 1.12: Use Spring MVC standard validation
-	 TODO:
-	 	-- Ensure customerName,dateOfIncidence, amount and complaintTypeId is a mandatory field.
-	 	-- Validate dateOfIncidence to be in format of dd-MMM-yyyy
-	 	-- Validate dateOfIncidence to be the past date
-	 */
 	private Integer complaintId;
 	@NotBlank(message="Please Enter Customer Name	")
 	private String customerName;
