@@ -32,20 +32,7 @@ public class ComplaintDaoWrapper {
 	@PersistenceContext
 	private EntityManager manager;
 
-	/** 
-     *  To-Do Item 1.3: This method should register complaint details.
-	 * 			NOTE:This requirement needs to be implemented using Spring JPA Data.
-     *
-     * Steps to Implement:
-     * 1. Create a new ComplaintEntity object.
-     * 2. Copy properties from the ComplaintBean to the ComplaintEntity using BeanUtils.copyProperties().
-     * 3. Save the ComplaintEntity by calling appropriate method from complaintDao.
-     *
-     * @param complaintBean The ComplaintBean containing details of the complaint.
-     * @return complaint id.
-     */
 	public int registerComplaintDetails(ComplaintBean complaintBean) {
-		// Your implementation goes here
 		ComplaintEntity complaintEntity = new ComplaintEntity();
 		BeanUtils.copyProperties(complaintBean, complaintEntity);
 		complaintDao.save(complaintEntity);
@@ -54,24 +41,7 @@ public class ComplaintDaoWrapper {
 		return complaintEntity.getComplaintId();
     }
 
-	/**
-     * To-Do Item 1.4: This method should Retrieve complaint details by date range.
-	 * 			NOTE:This requirement needs to be implemented using using JPA EntityManager.
-	 * 
-     * Steps to Implement:
-     * 1. Create a named query "getComplaintDetailsByDate" using the entity manager.
-     * 2. Set parameters in the query for fromDate and toDate.
-     * 3. Execute the query using getResultList() to get a list of ComplaintEntity.
-     * 4. Iterate over the entities, copy properties to ComplaintBean, and add to the list.
-     * 5. Return the list of ComplaintBean.
-     *
-     * @param fromDate The start date of the date range.
-     * @param toDate The end date of the date range.
-     * @return List of ComplaintBean within the specified date range.
-     */ 
-	
 	public List<ComplaintBean> getComplaintDetailsByDate(Date fromDate, Date toDate) {
-		// Your implementation goes here
 		
 		String getComplaintDetailsByDate = "select c from ComplaintEntity c where c.dateOfIncidence>= ?1 and c.dateOfIncidence<=?2";
 		
@@ -90,20 +60,8 @@ public class ComplaintDaoWrapper {
 		}
 		return list;
 	}
-
-	/**
-     * To-Do Item 1.5: This method should Retrieve all complaint types.
-	 * 			NOTE:This requirement needs to be implemented using using Spring JPA Data.
-	 * 
-     * Steps to Implement:
-     * 1. Retrieve all ComplaintTypeEntity by calling appropriate method from complaintTypeDao.
-     * 2. Iterate over the entities, copy properties to ComplaintTypeBean, and add to the list.
-     * 3. Return the list of ComplaintTypeBean.
-     *
-     * @return List of all ComplaintTypeBean.
-     */
+	
 	public List<ComplaintTypeBean> getAllComplaintTypes() {
-		// Your implementation goes here
 		List<ComplaintTypeEntity> entList = complaintTypeDao.findAll();
 		List<ComplaintTypeBean> beanList = new ArrayList<>();
 		
@@ -116,13 +74,6 @@ public class ComplaintDaoWrapper {
         return beanList;
 	}
 
-	/**
-     * This method should Check if a customer has a complaint of a specific type.
-	 * 
-     * @param customerName The name of the customer.
-     * @param complaintTypeId The ID of the complaint type.
-     * @return 1 if the customer has a complaint of the specified type, 0 otherwise.
-     */
 	public int getCustomerByComplaintType(String customerName, int complaintTypeId) {
 		ComplaintEntity complaintEntity = complaintDao.getCustomerByComplaintType(customerName, complaintTypeId);
 		if(complaintEntity!=null)
