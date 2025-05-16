@@ -21,7 +21,6 @@ public class ComplaintServiceImpl implements ComplaintService {
 	private ComplaintDaoWrapper complaintDaoWrapper;
 
 	public int registerComplaintDetails(ComplaintBean complaintBean) throws Exception {
-		// Your implementation goes here
 		int status = complaintDaoWrapper.getCustomerByComplaintType(complaintBean.getCustomerName(), complaintBean.getComplaintTypeId());
 		if(status == 1) {
 			throw new Exception("You have already submitted a complaint with the same type.");
@@ -32,13 +31,11 @@ public class ComplaintServiceImpl implements ComplaintService {
 
 	@Override
 	public List<ComplaintBean> getComplaintDetailsByDate(Date fromDate, Date toDate) {
-		// Your implementation goes here
 		return complaintDaoWrapper.getComplaintDetailsByDate(fromDate, toDate);
 	}
 
 	@Override
 	public Map<Integer, String> getAllComplaintTypes() {
-		// Your implementation goes here
 		Map<Integer, String> complaintMap = new HashMap<>();
 		List<ComplaintTypeBean> beanList = new ArrayList<>();
 		beanList = complaintDaoWrapper.getAllComplaintTypes();
