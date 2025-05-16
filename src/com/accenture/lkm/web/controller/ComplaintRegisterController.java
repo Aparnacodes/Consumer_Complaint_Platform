@@ -29,7 +29,6 @@ public class ComplaintRegisterController {
 
 	@RequestMapping(value="/complaintForm", method=RequestMethod.POST)
 	public ModelAndView processComplaintForm(@ModelAttribute("complaintBean") @Valid ComplaintBean complaintBean,BindingResult result) throws Exception {
-		 // Your implementation goes here
 		ModelAndView mv = new ModelAndView();
 		if(result.hasErrors()) {
 			mv.setViewName("ComplaintPage");
