@@ -13,10 +13,6 @@
 </head>
 <body bgcolor="lavender">
 	<div class="center">
-	<!-- 		
-			To-Do Item 1.13:
-			TODO - Display a message showing Hi <<customerName>>  your complaint is successful registered.
-					NOTE: You can refer to To-Do Item 1.9 -->
 					<h3>${message }</h3>
 		<a href="index.jsp">Home</a>
 	</div>
