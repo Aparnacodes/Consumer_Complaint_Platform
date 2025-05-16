@@ -10,10 +10,6 @@ import com.accenture.lkm.entity.ComplaintEntity;
 @Transactional(value = "txManager")
 public interface ComplaintDao {
 	public ComplaintEntity save(ComplaintEntity complaintEntity);
-	
-	/**
-    This method is retrieving Complaint details where the customerName and the complaintTypeId is matching to the given values
- 	*/
 	@Query(name="getCustomerByComplaintType")
 	public ComplaintEntity getCustomerByComplaintType(String customerName,int complaintTypeId);
 }
